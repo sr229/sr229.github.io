@@ -1,0 +1,18 @@
+:root {
+    --primary-color: #f06292;
+    --secondary-color: #ec407a;
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100;
+}
+
+.flex-container {
+    display: flex;
+}

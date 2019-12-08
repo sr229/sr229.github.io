@@ -98,7 +98,7 @@ h2 {
   width: 75%;
   max-width: 1500px;
   align-self: center;
-  padding: 2rem 0;
+  padding-top: 2rem;
 }
 
 #about {
@@ -124,14 +124,19 @@ h2 {
 }
 
 .card {
-  /* flex-shrink: 1; */
+  position: relative;
   display: flex;
   padding: 2.5rem 2rem;
   flex-direction: column;
   border-radius: 4px;
-  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.5);
   align-items: center;
   text-align: center;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.35);
+  transition: box-shadow 0.2s ease-out;
+}
+
+.card:hover {
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.5);
 }
 
 .card > .avatar {
@@ -149,9 +154,61 @@ h2 {
   margin: 0;
 }
 
+.card-clicker {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .footer {
+  display: flex;
   height: 150px;
+  margin-top: 2rem;
   background: #474747;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#media {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 4rem;
+}
+
+#media h2 {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+#media :not(h2) {
+  font-size: 1.2rem;
+}
+
+.link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-list li {
+  margin-bottom: 0.25rem;
+}
+
+.link-list a {
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+
+.link-list img {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.5rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -162,13 +219,15 @@ h2 {
   }
 
   #about {
-    /* woops image takes up too much room, how fix */
     grid-template-columns: initial;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-gap: 0;
   }
 
   .about-info,
+  .about-info > p,
   .about-img {
     width: 100%;
+    max-width: 100%;
   }
 }

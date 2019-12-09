@@ -38,7 +38,7 @@ h1 {
 }
 
 .header > h3 {
-    color: white;
+  color: white;
 }
 
 h2 {
@@ -57,13 +57,14 @@ h2 {
   color: black;
   font-weight: 700;
   text-decoration: none !important;
-  transition: color 0.1s ease-out, border-color 0.1s ease-out, background-color 0.1s ease-out;
+  transition: color 0.1s ease-out, border-color 0.1s ease-out,
+    background-color 0.1s ease-out;
 }
 
 .button:hover {
   color: white;
   border-color: var(--primary-color);
-  background-color: var(--primary-color)
+  background-color: var(--primary-color);
 }
 
 .avatar {
@@ -78,7 +79,8 @@ h2 {
   display: flex;
   height: 500px;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("../img/hero.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/hero.png");
   background-size: cover;
   background-position: center;
   flex-direction: column;
@@ -177,6 +179,7 @@ h2 {
   align-items: center;
   justify-content: center;
   text-align: center;
+  flex-direction: column;
 }
 
 #media {

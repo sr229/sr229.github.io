@@ -57,7 +57,7 @@ h2 {
   color: var(--primary-color);
   font-weight: 700;
   text-decoration: none !important;
-  transition: color 0.2s ease-out, border-color 0.2s ease-out;
+  transition: color 0.1s ease-out, border-color 0.2s ease-out, background-color 0.2s ease-out;
 }
 
 .button:hover {

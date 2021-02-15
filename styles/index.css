@@ -184,7 +184,7 @@ h2 {
 
 #media {
   display: grid;
-  grid-template-columns: repeat(2, 50%);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 4rem;
 }
 

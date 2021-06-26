@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: sr229.github.io
+Token: bfb3512a44d5ddfbbe0d1e15b486f027af14a9c67c74e4352cb98b00138642cd

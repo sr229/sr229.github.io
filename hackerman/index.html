@@ -1,18 +1,28 @@
+<!doctype html>
 <html>
 <head>
-    <title>(p≧w≦q)</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="/hackerman/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1100, initial-scale=1.0">
+    <link rel="stylesheet" href="/hackerman/xterm.css" />
+    <link rel="stylesheet" href="/hackerman/scrollbar.css" />
+    <script src="/hackerman/xterm.min.js"></script>
+    <script src="/hackerman/xterm-addon-fit.js"></script>
+    <script src="/hackerman/service-worker.js"></script>
 </head>
-<body>
-    <!-- Begin JSLinux -->
-    <div id="term_wrap">
-        <div id="term_container">
-        </div>
-    </div>
-    <script type="text/javascript" src="term.js"></script>
-    <script type="text/javascript" src="jslinux.js"></script>
+<body style="margin:0;height:100%;background:black;color:white;overflow:hidden; display:flex; flex-direction: column; justify-content: space-between; height: 100%;">
+    <main style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px; height: 100%;">
+        <div style="flex-grow:1; height:100%;display:inline-block;margin:0;" class="scrollbar" id="terminal"></div>
+    </main>
+    <script>
+        var term = new Terminal({ cursorBlink: true, convertEol: true, fontFamily: "monospace", fontWeight: 400, fontWeightBold: 700 });
+        var fitAddon = new FitAddon.FitAddon();
+        term.loadAddon(fitAddon);
+        term.open(document.getElementById('terminal'));
+
+        fitAddon.fit();
+        window.addEventListener("resize", function (ev) { fitAddon.fit(); }, false);
+        term.focus();
+        term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
+    </script>
 </body>
 </html>

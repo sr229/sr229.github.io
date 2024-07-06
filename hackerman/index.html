@@ -4,14 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=1100, initial-scale=1.0">
-    <link rel="stylesheet" href="/hackerman/xterm.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.17.0/css/xterm.css">
     <link rel="stylesheet" href="/hackerman/scrollbar.css" />
-    <script src="/hackerman/xterm.min.js"></script>
-    <script src="/hackerman/xterm-addon-fit.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
-    <script src="/hackerman/service-worker.js"></script>
-    <script src="/hackerman/stack.js"></script>
-    <script src="/hackerman/ws-delegate.js"></script>
 </head>
 
 <body
@@ -19,6 +13,12 @@
     <main style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px; height: 100%;">
         <div style="flex-grow:1; height:100%;display:inline-block;margin:0;" class="scrollbar" id="terminal"></div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/xterm@4.17.0/lib/xterm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.js"></script>
+    <script src="/hackerman/service-worker.js"></script>
+    <script src="/hackerman/stack.js"></script>
+    <script src="/hackerman/ws-delegate.js"></script>
     <script>
         // Initialise Xterm.js and Fit Addon
         const term = new Terminal({ cursorBlink: true, convertEol: true, fontFamily: "monospace", fontWeight: 400, fontWeightBold: 700 });

@@ -4,3 +4,7 @@ FROM riscv64/alpine:latest
 
 COPY etc /etc
 COPY root /root
+
+USER root
+WORKDIR /root
+ENTRYPOINT ["/bin/sh"]

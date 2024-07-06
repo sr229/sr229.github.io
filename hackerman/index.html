@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=1100, initial-scale=1.0">
@@ -7,22 +8,70 @@
     <link rel="stylesheet" href="/hackerman/scrollbar.css" />
     <script src="/hackerman/xterm.min.js"></script>
     <script src="/hackerman/xterm-addon-fit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
     <script src="/hackerman/service-worker.js"></script>
+    <script src="/hackerman/stack.js"></script>
+    <script src="/hackerman/ws-delegate.js"></script>
 </head>
-<body style="margin:0;height:100%;background:black;color:white;overflow:hidden; display:flex; flex-direction: column; justify-content: space-between; height: 100%;">
+
+<body
+    style="margin:0;height:100%;background:black;color:white;overflow:hidden; display:flex; flex-direction: column; justify-content: space-between; height: 100%;">
     <main style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px; height: 100%;">
         <div style="flex-grow:1; height:100%;display:inline-block;margin:0;" class="scrollbar" id="terminal"></div>
     </main>
     <script>
-        var term = new Terminal({ cursorBlink: true, convertEol: true, fontFamily: "monospace", fontWeight: 400, fontWeightBold: 700 });
-        var fitAddon = new FitAddon.FitAddon();
+        // Initialise Xterm.js and Fit Addon
+        const term = new Terminal({ cursorBlink: true, convertEol: true, fontFamily: "monospace", fontWeight: 400, fontWeightBold: 700 });
+        const fitAddon = new FitAddon.FitAddon();
         term.loadAddon(fitAddon);
         term.open(document.getElementById('terminal'));
 
         fitAddon.fit();
         window.addEventListener("resize", function (ev) { fitAddon.fit(); }, false);
-        term.focus();
-        term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
+        // End initialisation
+
+        // Pty code goes here
+        const { master, slave } = openpty();
+
+        termios = slave.ioctl("TCGETS");
+        termios.iflag &= ~(/*IGNBRK | BRKINT | PARMRK |*/ ISTRIP | INLCR | IGNCR | ICRNL | IXON);
+        termios.oflag &= ~(OPOST);
+        termios.lflag &= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
+        //termios.cflag &= ~(CSIZE | PARENB);
+        //termios.cflag |= CS8;
+        slave.ioctl("TCSETS", new Termios(termios.iflag, termios.oflag, termios.cflag, termios.lflag, termios.cc));
+        term.loadAddon(master);
+        const worker = new Worker("/hackerman/service-worker.js" + location.search);
+
+        var nwStack;
+        var netParam = getNetParam();
+        var workerImage = location.origin + "/hackerman/dist/sys.wasm";
+        if (netParam) {
+            if (netParam.mode == 'delegate') {
+                nwStack = delegate(worker, workerImage, netParam.param);
+            } else if (netParam.mode == 'browser') {
+                nwStack = newStack(worker, workerImage, new Worker("/hackerman/stack-worker.js" + location.search), location.origin + "/hackerman/c2w-net-proxy.wasm");
+            }
+        }
+        if (!nwStack) {
+            worker.postMessage({ type: "init", imagename: workerImage });
+        }
+        new TtyServer(slave).start(worker, nwStack);
+
+        function getNetParam() {
+            var vars = location.search.substring(1).split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var kv = vars[i].split('=');
+                if (decodeURIComponent(kv[0]) == 'net') {
+                    return {
+                        mode: kv[1],
+                        param: kv[2],
+                    };
+                }
+            }
+            return null;
+        }
     </script>
 </body>
+
 </html>

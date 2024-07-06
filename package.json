@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "live-server --no-browser --cors --open=$(pwd)",
     "build": "pnpm build:docker && pnpm build:sys-image",
-    "build:docker": "docker build --platform=linux/riscv64 -t hackerman-sys -f ./hackerman/system_image/sys.dockerfile ./hackerman/system_image/",
+    "build:docker": "docker buildx build -t hackerman-sys --platform=linux/riscv64 -f hackerman/system_image/sys.dockerfile hackerman/system_image/",
     "build:sys-image": "./tools/c2w --target-arch=riscv64 hackerman-sys ./hackerman/dist/sys.wasm"
   },
   "devDependencies": {

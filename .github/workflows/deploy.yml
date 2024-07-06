@@ -17,8 +17,11 @@ jobs:
       - name: Corepack enable
         run: corepack enable
       
-      - name: Build
+      - name: Build System image
         run: pnpm build
+      
+      - name: Pack for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
   deploy:
     needs: build
 

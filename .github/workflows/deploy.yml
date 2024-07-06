@@ -3,7 +3,6 @@ on: push
 
 jobs:
   build:
-    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +32,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      
+
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:

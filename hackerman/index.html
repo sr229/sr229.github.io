@@ -1,77 +1,41 @@
 <!doctype html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=1100, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.17.0/css/xterm.css">
-    <link rel="stylesheet" href="/hackerman/scrollbar.css" />
+<title>Deno demo (x86_64)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.1.0/css/xterm.css">
 </head>
+<body>
+<main class="container">
 
-<body
-    style="margin:0;height:100%;background:black;color:white;overflow:hidden; display:flex; flex-direction: column; justify-content: space-between; height: 100%;">
-    <main style="display: flex; flex-direction: row; justify-content: space-between; margin: 5px; height: 100%;">
-        <div style="flex-grow:1; height:100%;display:inline-block;margin:0;" class="scrollbar" id="terminal"></div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/xterm@4.17.0/lib/xterm.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.js"></script>
-    <script src="/hackerman/service-worker.js"></script>
-    <script src="/hackerman/stack.js"></script>
-    <script src="/hackerman/ws-delegate.js"></script>
-    <script>
-        // Initialise Xterm.js and Fit Addon
-        const term = new Terminal({ cursorBlink: true, convertEol: true, fontFamily: "monospace", fontWeight: 400, fontWeightBold: 700 });
-        const fitAddon = new FitAddon.FitAddon();
-        term.loadAddon(fitAddon);
-        term.open(document.getElementById('terminal'));
+<h1>Deno demo (x86_64)</h1>
 
-        fitAddon.fit();
-        window.addEventListener("resize", function (ev) { fitAddon.fit(); }, false);
-        // End initialisation
+<p>Example of running Deno (x86_64) on browser using <a href="https://github.com/ktock/container2wasm">container2wasm</a>.</p>
 
-        // Pty code goes here
-        const { master, slave } = openpty();
+<h2>Source Container Image</h2>
 
-        termios = slave.ioctl("TCGETS");
-        termios.iflag &= ~(/*IGNBRK | BRKINT | PARMRK |*/ ISTRIP | INLCR | IGNCR | ICRNL | IXON);
-        termios.oflag &= ~(OPOST);
-        termios.lflag &= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
-        //termios.cflag &= ~(CSIZE | PARENB);
-        //termios.cflag |= CS8;
-        slave.ioctl("TCSETS", new Termios(termios.iflag, termios.oflag, termios.cflag, termios.lflag, termios.cc));
-        term.loadAddon(master);
-        const worker = new Worker("/hackerman/service-worker.js" + location.search);
+<pre><code>denoland/deno:alpine-1.43.2</code></pre>
 
-        var nwStack;
-        var netParam = getNetParam();
-        var workerImage = location.origin + "/hackerman/dist/sys.wasm";
-        if (netParam) {
-            if (netParam.mode == 'delegate') {
-                nwStack = delegate(worker, workerImage, netParam.param);
-            } else if (netParam.mode == 'browser') {
-                nwStack = newStack(worker, workerImage, new Worker("/hackerman/stack-worker.js" + location.search), location.origin + "/hackerman/c2w-net-proxy.wasm");
-            }
-        }
-        if (!nwStack) {
-            worker.postMessage({ type: "init", imagename: workerImage });
-        }
-        new TtyServer(slave).start(worker, nwStack);
+<h2>Terminal</h2>
+<div class="d-inline-block" id="terminal"></div>
 
-        function getNetParam() {
-            var vars = location.search.substring(1).split('&');
-            for (var i = 0; i < vars.length; i++) {
-                var kv = vars[i].split('=');
-                if (decodeURIComponent(kv[0]) == 'net') {
-                    return {
-                        mode: kv[1],
-                        param: kv[2],
-                    };
-                }
-            }
-            return null;
-        }
-    </script>
+<p><a href="?">[launch deno repl]</a> <a href="?args=sh">[inspect(launch "sh")]</a></p>
+
+<p>It can take some time to load and start the container.</p>
+
+<hr>
+
+<p>More info including docs and source code is available from <a href="https://github.com/ktock/container2wasm">container2wasm</a> repo. This page is served from <a href="https://github.com/ktock/container2wasm-demo-deno">container2wasm-demo-deno repo</a> as GitHub Pages.</p>
+
+</main>
+<script src="./coi-serviceworker.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xterm@5.1.0/lib/xterm.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/index.js"></script>
+<script src="./src/stack.js"></script>
+<script src="./worker.js"></script>
+<script>startWasi("terminal", "./src/worker.js"+location.search, location.origin + "/hackerman" + "/system_image/amd64-sys", 1);</script>
 </body>
 
 </html>

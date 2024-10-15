@@ -1,8 +1,8 @@
 importScripts("https://cdn.jsdelivr.net/npm/xterm-pty@0.9.4/workerTools.js");
-importScripts(location.origin + "/hackerman" + "/src/browser_wasi_shim/index.js");
-importScripts(location.origin + "/hackerman" + "/src/browser_wasi_shim/wasi_defs.js");
-importScripts(location.origin + "/hackerman" + "/src/worker-util.js");
-importScripts(location.origin + "/hackerman" + "/src/wasi-util.js");
+importScripts(location.origin + "/hackerman/src/browser_wasi_shim/index.js");
+importScripts(location.origin + "/hackerman/src/browser_wasi_shim/wasi_defs.js");
+importScripts(location.origin + "/hackerman/src/worker-util.js");
+importScripts(location.origin + "/hackerman/src/wasi-util.js");
 
 onmessage = (msg) => {
     if (serveIfInitMsg(msg)) {
@@ -47,7 +47,7 @@ onmessage = (msg) => {
 function startWasi(wasm, ttyClient, args, env, fds, listenfd, connfd) {
     var cmd = getArgs();
     if (!cmd) {
-        cmd = 'deno repl'
+        cmd = 'cat /etc/motd && /bin/sh -l'
     }
     var flags = ['-entrypoint', '/bin/sh', '--', '-c', cmd];
     if (args.length > 0) {

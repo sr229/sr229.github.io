@@ -1,7 +1,7 @@
-importScripts(location.origin + "/hackerman" + "/src/browser_wasi_shim/index.js");
-importScripts(location.origin + "/hackerman" + "/src/browser_wasi_shim/wasi_defs.js");
-importScripts(location.origin + "/hackerman" + "/src/worker-util.js");
-importScripts(location.origin + "/hackerman" + "/src/wasi-util.js");
+importScripts(location.origin + "/hackerman/src/browser_wasi_shim/index.js");
+importScripts(location.origin + "/hackerman/src/browser_wasi_shim/wasi_defs.js");
+importScripts(location.origin + "/hackerman/src/worker-util.js");
+importScripts(location.origin + "/hackerman/src/wasi-util.js");
 
 onmessage = (msg) => {
     serveIfInitMsg(msg);

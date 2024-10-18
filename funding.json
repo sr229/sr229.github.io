@@ -1,0 +1,163 @@
+{
+    "version": "v1.0.0",
+    "entity": {
+        "type": "individual",
+        "role": "maintainer",
+        "name": "Ayase Minori",
+        "email": "ayane@duck.com",
+        "phone": "",
+        "description": "I maintain some small OSS Projects, and then some. I maintain a lot of my own projects in my free time, which I have zero time most of the time.",
+        "webpageUrl": {
+            "url": "https://sr229.github.io"
+        }
+    },
+    "projects": [
+        {
+            "guid": "sagiri",
+            "name": "Sagiri",
+            "description": "A simple and functional SauceNAO API wrapper for Node.js, Deno, Bun, and beyond!",
+            "webpageUrl": {
+                "url": "https://sr229.github.io/"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/ClarityCafe/Sagiri",
+                "wellKnown": "https://github.com/ClarityCafe/Sagiri/tree/master/.well-known/funding-manifest-urls"
+            },
+            "licenses": [
+                "MIT"
+            ],
+            "tags": [
+                "nodejs",
+                "saucenao",
+                "functional",
+                "api",
+                "wrapper",
+                "async"
+            ]
+        },
+        {
+            "guid": "sayori",
+            "name": "Sayori",
+            "description": "An API/Frontend to render your poems like it's Doki Doki Literature Club!",
+            "webpageUrl": {
+                "url": "https://sr229.github.io/"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/sr229/sayori",
+                "wellKnown": "https://github.com/sr229/sayori/tree/master/.well-known/funding-manifest-urls"
+            },
+            "licenses": [
+                "MIT"
+            ],
+            "tags": [
+                "python",
+                "api",
+                "flask",
+                "api",
+                "ddlc",
+                "pillow"
+            ]
+        },
+        {
+            "guid": "cosyneco-mediapipenet",
+            "name": "MediaPipe.NET",
+            "description": "A .NET-native wrapper for Google's MediaPipe.",
+            "webpageUrl": {
+                "url": "https://sr229.github.io/"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/cosyneco/MediaPipe.NET",
+                "wellKnown": "https://github.com/cosyneco/MediaPipe.NET/tree/master/.well-known/funding-manifest-urls"
+            },
+            "licenses": [
+                "MIT"
+            ],
+            "tags": [
+                "python",
+                "api",
+                "flask",
+                "api",
+                "ddlc",
+                "pillow"
+            ]
+        }
+    ],
+    "funding": {
+        "channels": [
+            {
+                "guid": "kofi",
+                "type": "payment-provider",
+                "address": "https://ko-fi.com/capuccino",
+                "description": "This is my main payment channel for those who doesn't want the additional hassle!"
+            },
+            {
+                "guid": "paypal",
+                "type": "payment-provider",
+                "address": "https://paypal.me/sr229",
+                "description": "If ko-fi does not work for you, I also accept PayPal!"
+            },
+            {
+                "guid": "wise",
+                "type": "bank",
+                "address": "https://wise.com/pay/me/ralphwilsoncalvaridoa",
+                "description": "I also provide Wise Transfer too; this is recommended for big transactions!"
+            }
+        ],
+        "plans": [
+            {
+                "guid": "coffee",
+                "status": "active",
+                "name": "Buy me a coffee!",
+                "description": "A simple thank you tip to help me keep motivated to whatever I'm doing <3",
+                "amount": 5,
+                "currency": "USD",
+                "frequency": "one-time",
+                "channels": [
+                    "kofi",
+                    "paypal",
+                    "wise"
+                ]
+            },
+            {
+                "guid": "recurring",
+                "status": "active",
+                "name": "Hosting Costs",
+                "description": "If you want to support me on a monthly basis. This will allow me to procure infrastructure for some of my projects and keep some of my existing ones online <3",
+                "amount": 50,
+                "currency": "USD",
+                "frequency": "monthly",
+                "channels": [
+                    "kofi",
+                    "wise"
+                ]
+            },
+            {
+                "guid": "recurring",
+                "status": "active",
+                "name": "Recurring",
+                "description": "If you want to support me on a monthly basis. This would help me cover my living expenses so I can work on OSS full-time :D",
+                "amount": 150,
+                "currency": "USD",
+                "frequency": "monthly",
+                "channels": [
+                    "kofi",
+                    "wise"
+                ]
+            },
+            {
+                "guid": "steamdeck",
+                "status": "active",
+                "name": "Special: New Hardware (for MediaPipe.NET)",
+                "description": "Maintaining projects is hard, and even more so without any proper hardware. This will allow me to buy new hardware in order to help me deploy new stuff!",
+                "amount": 1500,
+                "currency": "USD",
+                "frequency": "one-time",
+                "channels": [
+                    "kofi",
+                    "wise"
+                ]
+            }
+        ],
+        "history": []
+    }
+}

@@ -21,7 +21,7 @@
             },
             "repositoryUrl": {
                 "url": "https://github.com/ClarityCafe/Sagiri",
-                "wellKnown": "https://github.com/ClarityCafe/Sagiri/tree/master/.well-known/funding-manifest-urls"
+                "wellKnown": "https://github.com/ClarityCafe/Sagiri/blob/master/.well-known/funding-manifest-urls"
             },
             "licenses": [
                 "spdx:MIT"
@@ -44,7 +44,7 @@
             },
             "repositoryUrl": {
                 "url": "https://github.com/sr229/sayori",
-                "wellKnown": "https://github.com/sr229/sayori/tree/master/.well-known/funding-manifest-urls"
+                "wellKnown": "https://github.com/sr229/sayori/blob/master/.well-known/funding-manifest-urls"
             },
             "licenses": [
                 "spdx:MIT"
@@ -67,7 +67,7 @@
             },
             "repositoryUrl": {
                 "url": "https://github.com/cosyneco/MediaPipe.NET",
-                "wellKnown": "https://github.com/cosyneco/MediaPipe.NET/tree/master/.well-known/funding-manifest-urls"
+                "wellKnown": "https://github.com/cosyneco/MediaPipe.NET/blob/master/.well-known/funding-manifest-urls"
             },
             "licenses": [
                 "spdx:MIT"

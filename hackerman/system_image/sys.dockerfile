@@ -7,4 +7,5 @@ COPY root /root
 
 USER root
 WORKDIR /root
-ENTRYPOINT ["/bin/sh -l"]
+
+ENTRYPOINT ["/bin/sh", "-l"]

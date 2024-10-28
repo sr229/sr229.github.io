@@ -73,12 +73,12 @@
                 "spdx:MIT"
             ],
             "tags": [
-                "python",
-                "api",
-                "flask",
-                "api",
-                "ddlc",
-                "pillow"
+                "dotnet",
+                "mediapipe",
+                "machine-learning",
+                "ai",
+                "csharp",
+                "native"
             ]
         }
     ],

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sr229.us.kg/sitemap.xml

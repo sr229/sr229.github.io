@@ -11,6 +11,6 @@ COPY root /root
 USER root
 WORKDIR /root
 
-ENTRYPOINT ["/sbin/tini"]
+ENTRYPOINT ["/sbin/tini", "--"]
 
 CMD ["/bin/sh", "-l"]

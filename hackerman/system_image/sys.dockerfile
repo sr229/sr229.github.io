@@ -2,10 +2,15 @@
 # See: https://github.com/ktock/container2wasm
 FROM riscv64/alpine:latest
 
+RUN apk add --no-cache \
+    tini
+
 COPY etc /etc
 COPY root /root
 
 USER root
 WORKDIR /root
 
-ENTRYPOINT ["/bin/sh", "-l"]
+ENTRYPOINT ["/sbin/tini"]
+
+CMD ["/bin/sh", "-l"]

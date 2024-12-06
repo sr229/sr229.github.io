@@ -47,7 +47,7 @@ onmessage = (msg) => {
 function startWasi(wasm, ttyClient, args, env, fds, listenfd, connfd) {
     var cmd = getArgs();
     if (!cmd) {
-        cmd = 'cat /etc/motd && /bin/sh -l'
+        cmd = '/bin/busybox cat /etc/motd && /bin/sh -l'
     }
     var flags = ['-entrypoint', '/sbin/tini', '--', cmd];
     if (args.length > 0) {

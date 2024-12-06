@@ -47,9 +47,9 @@ onmessage = (msg) => {
 function startWasi(wasm, ttyClient, args, env, fds, listenfd, connfd) {
     var cmd = getArgs();
     if (!cmd) {
-        cmd = '/bin/sh -l'
+        cmd = 'tini /bin/sh -l'
     }
-    var flags = ['-entrypoint', '/sbin/tini', '--', cmd];
+    var flags = ['-entrypoint', '/bin/sh', '--', cmd];
     if (args.length > 0) {
         args = args.concat(flags);
     } else {

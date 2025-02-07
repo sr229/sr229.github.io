@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "live-server --no-browser --cors --open=$(pwd)",
     "build": "pnpm build:pre && pnpm build:docker && pnpm build:sys-image",
+    "build-rp3": "pnpm build:pre && pnpm build:docker-rp3 && pnpm build:sys-rp3",
     "build:pre": "docker run --rm --privileged multiarch/qemu-user-static --reset -p yes",
     "build:docker": "docker buildx build -t hackerman-sys --platform=linux/riscv64 -f hackerman/system_image/sys.dockerfile hackerman/system_image/",
+    "build:docker-rp3": "docker build --output=type=local,dest=/tmp/out/pack/ ./system_image/ -f ./system_image/sys-rp3.dockerfile",
+    "build:sys-rp3": "./tools/c2w --assets=hackerman-rp3/ --to-js --target-arch=aarch64 --pack=/tmp/out/ ./hackerman-rp3/dist/",
     "build:sys-image": "./tools/c2w --target-arch=riscv64 hackerman-sys ./hackerman/system_image/riscv64-sys.wasm00.wasm"
   },
   "devDependencies": {

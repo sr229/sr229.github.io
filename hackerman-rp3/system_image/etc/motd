@@ -1,0 +1,16 @@
+==================================================
+|     You find yourself in a strange place       |
+==================================================
+
+Fret not traveler, you didn't make a mistake. You stumbled upon an open terminal
+in a corner of the internet. If you didn't mean to be here, feel free to click 
+back the back button. 
+
+If you're curious, yes, this is my portfolio website. Thank you for stumbling here.
+This isn't your regular website, you're controlling a real terminal running a real
+system. I provided three files about me. You can view them by typing `ls $(pwd)`. 
+You can view the contents of a file by typing `cat $filename.txt`.
+
+Happy hacking!
+
+- Ayase Minori (sr229)

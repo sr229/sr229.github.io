@@ -49,7 +49,7 @@ function startWasi(wasm, ttyClient, args, env, fds, listenfd, connfd) {
     if (!cmd) {
         cmd = '/bin/sh -l'
     }
-    var flags = ['-entrypoint', '/bin/sh', '--', cmd];
+    var flags = ['-entrypoint', '/bin/sh', '--', '-c', cmd];
     if (args.length > 0) {
         args = args.concat(flags);
     } else {

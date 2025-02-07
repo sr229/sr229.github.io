@@ -3,7 +3,7 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
       - name: Clone repository
@@ -14,8 +14,8 @@ jobs:
         with:
           node-version: 22.x
 
-      - name: Corepack enable
-        run: corepack enable
+      - name: Install PNPM
+        run: npm i -g pnpm
       
       - name: Build System image
         run: pnpm build

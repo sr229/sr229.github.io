@@ -14,18 +14,9 @@
 			"installOhMyZsh": "true",
 			"installOhMyZshConfig": "true",
 			"upgradePackages": "true",
-			"username": "automatic",
-			"userUid": "automatic",
-			"userGid": "automatic",
 			"nonFreePackages": "true"
 		},
-		"ghcr.io/devcontainers/features/node": {
-			"version": "latest",
-			"nodeGypDependencies": "true",
-			"nvmInstallPath": "/usr/local/share/nvm",
-			"nvmVersion": "latest",
-			"installYarnUsingApt": "true"
-		}
+		"ghcr.io/michidk/devcontainers-features/bun:1": {},
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.

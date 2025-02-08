@@ -3,6 +3,7 @@ ARG ALPINE_VERSION=3.21.2
 
 FROM ubuntu:24.04 AS rootfs-dev
 RUN apt-get update && apt-get install -y gcc-aarch64-linux-gnu linux-libc-dev-arm64-cross git make wget
+ARG ALPINE_VERSION
 RUN mkdir -p /tmp/rootfs
 WORKDIR /tmp/rootfs
 RUN wget https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/aarch64/alpine-minirootfs-${ALPINE_VERSION}-aarch64.tar.gz -O alpine-rootfs.tgz

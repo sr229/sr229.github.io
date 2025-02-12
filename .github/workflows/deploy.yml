@@ -17,14 +17,11 @@ jobs:
       - name: Build System image
         run: bun build-hackerman
       
-      # This is expected to fail, make the build pass regardless
       - name: Build System image (RP3 image)
-        continue-on-error: true
         run: bun build-rp3
       
       - name: Pack for GitHub Pages
         id: deployment
-        if: always()
         uses: actions/upload-pages-artifact@v3
         with:
            path: ${{ github.workspace }}

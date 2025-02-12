@@ -11,7 +11,7 @@ RUN tar -xvzf alpine-rootfs.tgz && rm -rfv alpine-rootfs.tgz
 COPY --chown=root:root etc /etc
 COPY --chown=root:root root /root
 WORKDIR /tmp
-RUN dd if=/dev/zero of=rootfs.bin bs=12M count=1
+RUN dd if=/dev/zero of=rootfs.bin bs=10M count=1
 RUN mke2fs -d /tmp/rootfs rootfs.bin
 RUN mkdir /tmp/out/ && mv rootfs.bin /tmp/out/
 

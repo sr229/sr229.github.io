@@ -1,3 +1,6 @@
 out.js
 *.wasm
+*.worker.js
+*.data
 load.js
+arg-module.js

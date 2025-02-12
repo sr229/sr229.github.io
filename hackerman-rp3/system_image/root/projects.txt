@@ -1,0 +1,7 @@
+You may check out some of my projects and projects I contributed to:
+
+* Herta (https://herta.deno.dev) - A silly website about Herta, the most annoying/cutest HSR character.
+* Sagiri (https://jsr.io/@clarity/sagiri) - A simple and functional SauceNAO API.
+* Vignette (https://vignette.jp.eu.org) - (WIP) An open-source toolkit for VTubers
+* Live Simulator 2 (https://github.com/DarkEnergyProcessor/livesim2_async) - A clone of Love Live: SIF in LOVE2D.
+    * My contribution is UI assets (Lovewing and Main Menu UI)

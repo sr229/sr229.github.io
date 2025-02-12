@@ -9,16 +9,16 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - name: Use Bun.js
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 22.x
-
-      - name: Install PNPM
-        run: npm i -g pnpm
+          bun-version: latest
       
       - name: Build System image
-        run: pnpm build
+        run: bun build-hackerman
+      
+      - name: Build System image (RP3 image)
+        run: bun build-rp3
       
       - name: Pack for GitHub Pages
         id: deployment
@@ -28,6 +28,8 @@ jobs:
 
   deploy:
     needs: build
+    # only deploy on master
+    if: ${{ github.ref == 'refs/heads/master' }}
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:

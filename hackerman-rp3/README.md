@@ -8,5 +8,5 @@ docker build --output=type=local,dest=/tmp/out/pack/ ./system_image/ -f ./system
 Then run `../tools/c2w`:
 
 ```sh
-../tools/c2w --assets=. --to-js --target-arch=aarch64 --pack=/tmp/out/ ./dist/
+../tools/c2w --to-js --target-arch=aarch64 --pack=/tmp/out/ ./dist/
 ```

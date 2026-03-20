@@ -13,6 +13,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   </head>
   <body>
+    <!-- This is a surprise that will reveal later~ -->
+      <script>
+        const b=[78,89,93,93,75,89,89].map(a=>String.fromCharCode(a^42));let c=[];document.addEventListener("keydown",a=>{a=a.key.toLowerCase();"wasd".includes(a)&&(c.push(a),c.length>b.length&&c.shift(),c.join("")===b.join("")&&(window.location.href="/hackerman/",c=[]))});
+    </script>
     <header class="header">
       <nav class="quick-links">
         <a href="#about">About</a>

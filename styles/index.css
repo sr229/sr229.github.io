@@ -1,12 +1,11 @@
+/* 張り切っていこう！ */
+
 :root {
   --primary-color: #f06292;
   --secondary-color: #ec407a;
   font-size: 16px;
   font-family: Lato, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* * {
-} */
 
 *,
 *::before,
@@ -30,7 +29,6 @@ a:hover {
 }
 
 h1 {
-  /* color: var(--primary-color); */
   color: white;
   font-size: 3rem;
   margin: 0;
